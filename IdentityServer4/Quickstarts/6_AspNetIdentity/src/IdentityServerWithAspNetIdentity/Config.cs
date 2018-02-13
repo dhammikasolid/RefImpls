@@ -83,7 +83,45 @@ namespace IdentityServerWithAspNetIdentity
                         "api1"
                     },
                     AllowOfflineAccess = true
-                }
+                },
+
+                new Client
+                {
+                    ClientName = "MVC OWIN Hybrid Client",
+                    ClientId = "mvc.owin.hybrid",
+                    AllowedGrantTypes = GrantTypes.Hybrid,
+                    AllowAccessTokensViaBrowser = false,
+
+                    ClientSecrets = new List<Secret>
+                    {
+                        new Secret("secret".Sha256())
+                    },
+
+                    AllowedScopes = new List<string>
+                    {
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Profile,
+                        IdentityServerConstants.StandardScopes.Email,
+                        IdentityServerConstants.StandardScopes.OfflineAccess,
+                        "read",
+                        "write"
+                    },
+
+                    ClientUri = "https://identityserver.io",
+
+                    RequireConsent = false,
+                    AccessTokenType = AccessTokenType.Reference,
+
+                    RedirectUris = new List<string>
+                    {
+                        "https://localhost:5004/"
+                    },
+
+                    PostLogoutRedirectUris = new List<string>
+                    {
+                        "https://localhost:5004/"
+                    },
+                },
             };
         }
     }
