@@ -24,10 +24,10 @@ namespace MVC_OWIN_Client
             app.UseOpenIdConnectAuthentication(new OpenIdConnectAuthenticationOptions
             {
                 ClientId = "mvc.owin.implicit",
-                Authority = Constants.BaseAddress,
+                Authority = "http://localhost:5000",
                 RedirectUri = "https://localhost:44301/",
                 ResponseType = "id_token",
-                Scope = "openid email",
+                Scope = "openid",
 
                 UseTokenLifetime = false,
                 SignInAsAuthenticationType = "Cookies",
