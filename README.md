@@ -1,17 +1,18 @@
-# BeeReady Word
-Building myself is the destiny 
+# Development Stories
+Explain what I know better and confidenetly 
 
-# Areas
-Angualar 4
+# Tech Stack
 
+## Front End
+Angualar
+
+## Back End
 ASP.NET MVC | WebAPI
-
 Autofac DI
-
 xUnit Testing
 
+## Database | Data Access
 Entity Framework 6
-
 MS SQL Server
 
-Architecture | Design
+## Architecture | Design
