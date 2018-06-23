@@ -1,27 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace API
 {
     public class ValueSerive
     {
-        ValueStore valueStore;
+        IValuesRepository valuesRepository;
 
-        public ValueSerive(ValueStore valueStore)
+        public ValueSerive(IValuesRepository valuesRepository)
         {
-            this.valueStore = valueStore;
+            this.valuesRepository = valuesRepository;
         }
 
-        public IEnumerable<string> Get()
+        public IEnumerable<Value> Get()
         {
-            return valueStore.Get(); 
+            return valuesRepository.Get(); 
         }
 
         public string Get(int id)
         {
-            return valueStore.Get(id);
+            throw new NotImplementedException();
         }
     }
 }
