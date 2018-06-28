@@ -1,5 +1,8 @@
-﻿using Autofac;
+﻿using API.Customers;
+using Autofac;
 using Autofac.Integration.WebApi;
+using Facility.Service;
+using System.Data.Common;
 using System.Reflection;
 using System.Web.Http;
 using System.Web.Mvc;
@@ -32,9 +35,15 @@ namespace API
             // OPTIONAL: Register the Autofac model binder provider.
             builder.RegisterWebApiModelBinderProvider();
 
-            builder.RegisterType<ValueSerive>().AsSelf();
-            builder.RegisterType<EFValuesRepository>().AsImplementedInterfaces();
-            builder.RegisterType<ValuesContext>().AsSelf().InstancePerRequest();
+            builder.Register(c =>
+            {
+                return DbConnectionFactory.Connection;
+            })
+            .As<DbConnection>()
+            .InstancePerRequest();
+
+            builder.RegisterModule(new CustomerModule());
+            builder.RegisterModule(new FacilityModule());
 
             // Set the dependency resolver to be Autofac.
             var container = builder.Build();

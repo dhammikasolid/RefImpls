@@ -1,25 +1,23 @@
 namespace API.Migrations
 {
-    using System.Collections.Generic;
+    using System;
+    using System.Data.Entity;
     using System.Data.Entity.Migrations;
+    using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<API.ValuesContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<API.Customers.CustomerContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(API.ValuesContext context)
+        protected override void Seed(API.Customers.CustomerContext context)
         {
-            context.Values.AddOrUpdate(
-                x => x.P1, 
-                new Value { P1 = "P11" },
-                new Value { P1 = "P12" },
-                new Value { P1 = "P13" }
-                );
+            //  This method will be called after migrating to the latest version.
 
-            context.SaveChanges();
+            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
+            //  to avoid creating duplicate seed data.
         }
     }
 }
